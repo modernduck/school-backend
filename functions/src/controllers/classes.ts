@@ -1,6 +1,5 @@
 import * as express from 'express'
 import { AirtableBase } from "../airtable.service"
-
 const base = new AirtableBase('Classes');
 const app = express();
 
