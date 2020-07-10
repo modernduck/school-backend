@@ -16,4 +16,5 @@ app.get('/:id', async (req, res) => {
     res.json(user.fields);
 })
 
+
 export const UserApp = app;
