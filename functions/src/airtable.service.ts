@@ -29,6 +29,7 @@ export class AirtableBase{
             else
                 return `{${keyField}} = '${fields[keyField]}'`
         }).join(' AND ');
+        console.log('filterFormula', filterFormula)
         return base(this.baseName).select({filterByFormula:filterFormula}).all()
     }
 
