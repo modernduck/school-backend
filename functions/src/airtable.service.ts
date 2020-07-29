@@ -21,6 +21,17 @@ export class AirtableBase{
        return base(this.baseName).find(id)
     }
 
+    //beta kinda stupid one
+    findOne(fields:{[key:string]:any}){
+        const filterFormula = Object.keys(fields).map(keyField =>{
+            if(typeof(fields[keyField]) == "number")
+                return  `{${keyField}} = ${fields[keyField]}`
+            else
+                return `{${keyField}} = '${fields[keyField]}'`
+        }).join(' AND ');
+        return base(this.baseName).select({filterByFormula:filterFormula}).all()
+    }
+
     delete(param:string | Array<string>){
         let ids:Array<string> = [];
         if(typeof param === 'string')

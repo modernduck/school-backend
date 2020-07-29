@@ -33,6 +33,7 @@ const validateFirebaseIdToken = async (req:express.Request, res:express.Response
     try {
       const decodedIdToken = await FirebaseAdmin.auth().verifyIdToken(idToken);
       console.log('ID Token correctly decoded', decodedIdToken);
+      
       (req as any).user = decodedIdToken;
       next();
       return;
