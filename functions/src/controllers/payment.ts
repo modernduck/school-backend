@@ -16,7 +16,7 @@ app.post('/', async(req, res) => {
             "Name":(new Date()).toISOString(),
             "Type":"Transfers",
             "Paid":req.body.paid
-        })
+        }).catch(err => console.log(err))
     }
 })
 
